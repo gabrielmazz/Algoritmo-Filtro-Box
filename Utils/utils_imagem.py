@@ -59,7 +59,7 @@ def lista_imagens_pasta(pasta, console):
 
 def escolher_imagens(imagens, console):
     
-    # Escolhe uma imagem para aplicar o método de Otsu
+    # Escolhe uma imagem para aplicar o filtro Box
     while True:
         escolha = int(Prompt.ask('Escolha uma imagem para aplicar o [bold purple]Filtro Box[/bold purple]:', console=console))
         

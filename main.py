@@ -4,6 +4,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 import Filtro.filters as filters
 import Utils.utils_imagem as ut_img
+import Utils.utils_code as ut_code
 
 # Variáveis para passagem de argumentos via terminal
 parser = argparse.ArgumentParser()
@@ -29,10 +30,14 @@ def filtro_box(imagem_escolhida, tipo):
     ut_img.plotagem_imagem(Imagem_Original, Imagens_Binarias['2'], Imagens_Binarias['3'], Imagens_Binarias['5'], Imagens_Binarias['7'])
     
     # Salva a imagem na pasta de resultados
-    #if SAVE:
-        #ut_img.salvar_imagem(Imagem_Binaria, './resultados/{}_{}_{}_{}x{}.png'.format(tipo,imagem,filtro,m,n))
-
+    if SAVE:
+        for tamanho in tamanhos:
+            ut_img.salvar_imagem(Imagens_Binarias['{}'.format(tamanho)], './resultados/{}_box_{}x{}.png'.format(imagem_escolhida.split('.')[0], tamanho, tamanho))
+        
 if __name__ == '__main__':
+    
+    ut_code.clear_terminal()
+    ut_code.print_title()
     
     # Inicializa a console
     console = Console()

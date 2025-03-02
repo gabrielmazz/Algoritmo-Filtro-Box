@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import argparse
 from rich.console import Console
 from rich.prompt import Prompt
-import filters
+import Filtro.filters as filters
 import Utils.utils_imagem as ut_img
 
 # Variáveis para passagem de argumentos via terminal
@@ -13,22 +13,20 @@ SAVE = parser.add_argument('--save', action='store_true', help='Salvar a imagem 
 
 def filtro_box(imagem_escolhida, tipo):
     
+    # Tamanhos do filtro
+    tamanhos = [2, 3, 5, 7]
+    
+    # Dicionário para armazenar as imagens binarizadas
+    Imagens_Binarias = {}
+    
     # Leitura da imagem
     Imagem_Original = ut_img.leitura_Imagem('./imagens/{}'.format(imagem_escolhida))    
 
-    # Binarização da imagem com o método do filto box
-    Imagem_Binaria2x2 = filters.apply_box_filter(Imagem_Original, 2, 2, 2)
-    Imagem_Binaria3x3 = filters.apply_box_filter(Imagem_Original, 3, 3, 3)
-    Imagem_Binaria5x5 = filters.apply_box_filter(Imagem_Original, 5, 5, 5)
-    Imagem_Binaria7x7 = filters.apply_box_filter(Imagem_Original, 7, 7, 7)
-    
-    print(f"Contents of Imagem_Binaria3x3: {Imagem_Binaria3x3}")
-
-    print(f"Contents of Imagem_Binaria5x5: {Imagem_Binaria5x5}")
-    
+    for tamanho in tamanhos:
+        Imagens_Binarias['{}'.format(tamanho)] = filters.aplicar_filtro_box(Imagem_Original, tamanho, tamanho)
     
     # Realiza a plotagem das imagens
-    #ut_img.plotagem_imagem(Imagem_Original, Imagem_Binaria2x2, Imagem_Binaria3x3, Imagem_Binaria5x5, Imagem_Binaria7x7)
+    ut_img.plotagem_imagem(Imagem_Original, Imagens_Binarias['2'], Imagens_Binarias['3'], Imagens_Binarias['5'], Imagens_Binarias['7'])
     
     # Salva a imagem na pasta de resultados
     #if SAVE:

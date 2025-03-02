@@ -4,11 +4,13 @@ import numpy as np
 from rich.console import Console
 from rich.prompt import Prompt
 import os
+import cv2
 
 # Leitura da imagem
 def leitura_Imagem(nome):
-    print(nome)
+    
     imagem = mpimg.imread(nome)
+    
     return imagem
 
 # Realiza a plotagem das imagens com o matplotlib
@@ -59,7 +61,7 @@ def escolher_imagens(imagens, console):
     
     # Escolhe uma imagem para aplicar o método de Otsu
     while True:
-        escolha = int(Prompt.ask('Escolha uma imagem para aplicar o método de Otsu:', console=console))
+        escolha = int(Prompt.ask('Escolha uma imagem para aplicar o [bold purple]Filtro Box[/bold purple]:', console=console))
         
         if escolha > 0 and escolha <= len(imagens):
             return imagens[escolha-1]

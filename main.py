@@ -28,7 +28,7 @@ def filtro_box(imagem_escolhida, tipo):
         task = progress.add_task("[cyan]Processando...", total=7)
         
         # Tamanhos do filtro
-        progress.update(task, advance=1, description='Definindo tamanhos do filtro...')
+        progress.update(task, advance=1, description='[cyan]Definindo tamanhos do filtro...')
         tamanhos = [2, 3, 5, 7]
         
         time.sleep(1)
@@ -37,18 +37,18 @@ def filtro_box(imagem_escolhida, tipo):
         Imagens_Binarias = {}
         
         # Leitura da imagem
-        progress.update(task, advance=1, description='Lendo a imagem...')
+        progress.update(task, advance=1, description='[cyan]Lendo a imagem...')
         Imagem_Original = ut_img.leitura_Imagem('./imagens/{}'.format(imagem_escolhida))    
 
         time.sleep(1)
 
 
         for tamanho in tamanhos:
-            progress.update(task, advance=1, description='Aplicando filtro Box {}x{}...'.format(tamanho, tamanho))
+            progress.update(task, advance=1, description='[cyan]Aplicando filtro Box {}x{}...'.format(tamanho, tamanho))
             Imagens_Binarias['{}'.format(tamanho)] = filters.aplicar_filtro_box(Imagem_Original, tamanho, tamanho)
         
         # Realiza a plotagem das imagens
-        progress.update(task, advance=1, description='Plotando as imagens...')
+        progress.update(task, advance=1, description='[green]Plotando as imagens...')
         ut_img.plotagem_imagem(Imagem_Original, Imagens_Binarias['2'], Imagens_Binarias['3'], Imagens_Binarias['5'], Imagens_Binarias['7'])
     
     # Salva a imagem na pasta de resultados

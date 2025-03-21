@@ -54,7 +54,7 @@ def filtro_box(imagem_escolhida, tipo):
     # Salva a imagem na pasta de resultados
     if args.save:
         for tamanho in tamanhos:
-            ut_img.salvar_imagem(Imagens_Binarias['{}'.format(tamanho)], './resultados/{}_box_{}x{}.png'.format(imagem_escolhida.split('.')[0], tamanho, tamanho))
+            ut_img.salvar_imagem(Imagens_Binarias['{}'.format(tamanho)], './Resultados/{}_box_{}x{}.png'.format(imagem_escolhida.split('.')[0], tamanho, tamanho))
         
     if args.info:
         ut_code.print_infos(time.time() - start_time, tipo, imagem_escolhida)
